@@ -7,7 +7,7 @@
 - [x] 同级参数同时为空校验
 - [x] 对象参数渗透校验
 - [x] 校验优先级设置
-- [x] 校验结果支持单结果及多结果返回
+- [x] 支持返回多种校验结果
 
 #### 使用说明
 1. 在需要校验的实体类字段上面标记Verification注解
@@ -40,10 +40,11 @@ public class ParamVerificationOperator {
 3. 通过返回结果ParamVerificationResult判断参数校验结果
 
 ### 主要类及注解
-Verification[注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)、
-ParamVerificationOperator[参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
+1. [Verification注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)
+2. [ParamVerificationOperator参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
 
-### 测试例子
+### 调用参考例子
+[TestVerification测试例子](src/test/java/com/xyue/paramverification/test/TestVerification.java)
 ```java
 public class TestVerification{
 	private static Logger logger = LoggerFactory.getLogger(TestVerification.class);
