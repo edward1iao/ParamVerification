@@ -16,8 +16,8 @@ com.xyue.paramverification.ParamVerificationOperator.checkParam(Object, boolean,
 3. 通过反回结果ParamVerificationResult判断参数校验结果
 
 ps:/param-verification/src/test/java/com/xyue/paramverification/test/TestVerification.java 类中提供了测试例子
-Verification注解详情 [传送门](src/main/java/com/xyue/paramverification/annotation/Verification.java)
-ParamVerificationOperator参数验证操作类[传送门](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
+[Verification注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)
+[ParamVerificationOperator参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
 
 #### 项目说明
-本项目借鉴了Coody(https://gitee.com/coodyer)的coody-verification(https://gitee.com/coodyer/coody-verification)项目，再加入部分个人理解及需求进行改造。
+本项目借鉴了[Coody](https://gitee.com/coodyer)的[coody-verification](https://gitee.com/coodyer/coody-verification)项目，再加入部分个人理解及需求进行改造。
