@@ -13,8 +13,6 @@ public class Order {
 	private Double allPrice;
 	@Verification(priority=1000)
 	private List<OrderDetail> orderDetails;
-	@Verification(priority=999,nullHitMsg="价格不能为空")
-	private Double price;
 	public Long getOrderId() {
 		return orderId;
 	}

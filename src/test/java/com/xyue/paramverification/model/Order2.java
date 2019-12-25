@@ -6,19 +6,19 @@ import com.xyue.paramverification.annotation.Verification;
 
 public class Order2 {
 	@Verification
-	private OrderDetail[][] orderDetails;
+	private OrderDetail2[][] orderDetails2;
 	@Verification
-	private List<List<OrderDetail>> orderDetailList;
-	public OrderDetail[][] getOrderDetails() {
-		return orderDetails;
+	private List<List<OrderDetail2>> orderDetailList;
+	public OrderDetail2[][] getOrderDetails2() {
+		return orderDetails2;
 	}
-	public void setOrderDetails(OrderDetail[][] orderDetails) {
-		this.orderDetails = orderDetails;
+	public void setOrderDetails2(OrderDetail2[][] orderDetails2) {
+		this.orderDetails2 = orderDetails2;
 	}
-	public List<List<OrderDetail>> getOrderDetailList() {
+	public List<List<OrderDetail2>> getOrderDetailList() {
 		return orderDetailList;
 	}
-	public void setOrderDetailList(List<List<OrderDetail>> orderDetailList) {
+	public void setOrderDetailList(List<List<OrderDetail2>> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
 	

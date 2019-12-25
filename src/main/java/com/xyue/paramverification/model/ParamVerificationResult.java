@@ -36,6 +36,9 @@ public class ParamVerificationResult {
 	public boolean isSuccess(){
 		return EnumVerificationStatus.SUCCESS.getStatus()==this.verificationStatus;
 	}
+	public boolean isFail(){
+		return EnumVerificationStatus.FAIL.getStatus()==this.verificationStatus;
+	}
 	public ParamVerificationResult() {
 		super();
 	}

@@ -44,7 +44,7 @@ public class ParamUtil {
 	public static ParamVerificationResult checkParam(Object object,boolean isPrioritySort,boolean isAllCheck){
 		List<ParamModel> paramModels = null;
 		try {
-			paramModels = ParamUtil.getAllFields(object);
+			paramModels = getAllFields(object);
 		} catch (ParamVerificationException e) {
 			logger.error(e.getMessage(),e);
 			return ParamVerificationResult.exception(e.getMessage());
@@ -140,18 +140,19 @@ public class ParamUtil {
 	}
 	
 	private static List<ParamModel> getAllFields(Object object,Class<?> clazz,String preFieldNames,List<Integer> prioritys,List<String> recursions)throws ParamVerificationException{
+		logger.debug("getAllFields_object:{},clazz:{},preFieldNames:{},prioritys:{},recursions:{}",object,clazz,preFieldNames,prioritys,recursions);
 		List<ParamModel> paramModels = new ArrayList<ParamModel>();
 		if(!isBaseClass(clazz)){
 			if(Map.class.isAssignableFrom(clazz))throw new ParamVerificationException("暂不支持该类结构解析");
 			if(List.class.isAssignableFrom(clazz)){
-				if(object!=null){
+				if(!isNull(object)){
 					for(Object obj:(List<?>)object) {
 						if(!isBaseClass(obj.getClass())){
 							paramModels.addAll(getAllFields(obj,obj.getClass(), preFieldNames,prioritys,listAdd(recursions, object.getClass().getName()+"<"+obj.getClass().getName()+">")));
 						}
 					}
 				}else{
-					logger.warn("存在空的集合（object:{}，class:{}），无法解析泛型结构，略过！", object,clazz);
+					logger.warn("存在空的集合（object:{}，class:{}），无法解析泛型结构，不进行结构合理性验证！", object,clazz);
 				}
 			}else if(clazz.isArray()){
 				Class<?> clazz_ = clazz.getComponentType();

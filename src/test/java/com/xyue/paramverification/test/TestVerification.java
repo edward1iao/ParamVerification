@@ -1,6 +1,7 @@
 package com.xyue.paramverification.test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,6 +14,8 @@ import com.xyue.paramverification.model.Order;
 import com.xyue.paramverification.model.Order2;
 import com.xyue.paramverification.model.Order3;
 import com.xyue.paramverification.model.OrderDetail;
+import com.xyue.paramverification.model.OrderDetailData;
+import com.xyue.paramverification.model.ParamVerificationResult;
 
 public class TestVerification{
 	private static Logger logger = LoggerFactory.getLogger(TestVerification.class);
@@ -22,15 +25,21 @@ public class TestVerification{
 		order.setOrderId(111l);
 		order.setAllPrice(222d);
 		order.setOrderName("asdf");
+		List<OrderDetailData> orderDetailDatas = new ArrayList<OrderDetailData>();
+		orderDetailDatas.add(new OrderDetailData("sss", new Date(), null));
 		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-		orderDetails.add(new OrderDetail("assd", 222.3d));
-		orderDetails.add(new OrderDetail("dddd", 21.3d));
+		orderDetails.add(new OrderDetail("assd", 222.3d,orderDetailDatas));
+		orderDetails.add(new OrderDetail("dddd", 21.3d,orderDetailDatas));
 		order.setOrderDetails(orderDetails);
-		logger.info("order checkParam:{}",ParamVerificationOperator.checkParam(order,true,false));
+		ParamVerificationResult paramVerificationResult = ParamVerificationOperator.checkParam(order);
+		logger.info(paramVerificationResult.getVerificationMsg());
+		if(paramVerificationResult.isFail()) paramVerificationResult.getHitMsgs().forEach(logger::info);
 	}
 	@Test
 	public void test2(){
-		logger.info("order2 checkParam:{}",ParamVerificationOperator.checkParam(new Order2(),true,false));
+		ParamVerificationResult paramVerificationResult = ParamVerificationOperator.checkParam(new Order2(),false,true);
+		logger.info(paramVerificationResult.getVerificationMsg());
+		if(paramVerificationResult.isFail()) paramVerificationResult.getHitMsgs().forEach(logger::info);
 	}
 	@Test
 	public void test3() throws IllegalArgumentException, IllegalAccessException, ParamVerificationException {
@@ -40,6 +49,8 @@ public class TestVerification{
 		order3.setIndex(23);
 		order3.setLsPrice(300D);
 		order3.setJhPrice(300D);
-		logger.info("order3 checkParam:{}",ParamVerificationOperator.checkParam(order3,true,false));
+		ParamVerificationResult paramVerificationResult = ParamVerificationOperator.checkParam(order3,true,false);
+		logger.info(paramVerificationResult.getVerificationMsg());
+		if(paramVerificationResult.isFail()) paramVerificationResult.getHitMsgs().forEach(logger::info);
 	}
 }
