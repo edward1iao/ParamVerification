@@ -39,11 +39,11 @@ public class ParamVerificationOperator {
 ```
 3. 通过返回结果ParamVerificationResult判断参数校验结果
 
-###主要类及注解
-[Verification注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)、
-[ParamVerificationOperator参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)、
+### 主要类及注解
+Verification[注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)、
+ParamVerificationOperator[参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
 
-###测试例子
+### 测试例子
 ```java
 public class TestVerification{
 	private static Logger logger = LoggerFactory.getLogger(TestVerification.class);
