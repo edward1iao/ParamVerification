@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.xyue</groupId>
-  <artifactId>paramverification</artifactId>
+  <artifactId>param-verification</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
