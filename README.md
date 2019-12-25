@@ -1,7 +1,7 @@
 # param-verification
 
 #### 项目介绍
-参数校验工具（通过注解与反射实现）
+java实现的参数校验工具（通过注解与反射实现）
 - [x] 参数可空校验
 - [x] 参数正则校验
 - [x] 同级参数同时为空校验
@@ -10,8 +10,9 @@
 - [x] 支持返回多种校验结果
 
 #### 使用说明
-1. 在需要校验的实体类字段上面标记Verification注解
-2. 使用ParamVerificationOperator参数验证操作类checkParam方法进行参数校验;
+1. jdk需求1.8及以上版本
+2. 在需要校验的实体类字段上面标记Verification注解
+3. 使用ParamVerificationOperator参数验证操作类checkParam方法进行参数校验;
 ```java
 /**
  * 参数验证操作器
@@ -37,7 +38,7 @@ public class ParamVerificationOperator {
 	}
 }
 ```
-3. 通过返回结果ParamVerificationResult判断参数校验结果
+4. 通过返回结果ParamVerificationResult判断参数校验结果
 
 ### 主要类及注解
 1. [Verification注解详情](src/main/java/com/xyue/paramverification/annotation/Verification.java)
