@@ -10,8 +10,24 @@ java实现的参数校验工具（通过注解与反射实现）
 - [x] 支持返回多种校验结果
 
 #### 使用说明
-1. jdk需求1.8及以上版本
-2. 在需要校验的实体类字段上面标记Verification注解
+1. jdk需求1.8及以上版本;
+2. 在需要校验的实体类字段上面标记Verification注解;
+```java
+	@Verification(nullHitMsg="名称不能为空")
+	private String name;
+	@Verification(nullHitMsg="创建时间不能为空",format={FormatConstant.DATETIME},formatHitMsg={"创建时间格式错误"})
+	private String createtime;
+	@Verification(format={"^[0-9]|1[0-9]|2[0-3]$"},formatHitMsg={"取值范围只能在0-23"})
+	private Integer index;
+	@Verification(isNull=true,andNulls={"lsPrice","jhTime,jhSource"},andNullsHitMsg={"进货价格与零售价格不能同时为空","进货相关信息不能同时为空"})
+	private Double jhPrice;
+	@Verification(isNull=true)
+	private String jhTime;
+	@Verification(isNull=true)
+	private String jhSource;
+	@Verification(isNull=true)
+	private Double lsPrice;
+```
 3. 使用ParamVerificationOperator参数验证操作类checkParam方法进行参数校验;
 ```java
 /**
@@ -45,7 +61,8 @@ public class ParamVerificationOperator {
 2. [ParamVerificationOperator参数验证操作类](src/main/java/com/xyue/paramverification/ParamVerificationOperator.java)
 
 ### 调用参考例子
-[TestVerification测试例子](src/test/java/com/xyue/paramverification/test/TestVerification.java)
+1. [注解参考例子](src/test/java/com/xyue/paramverification/model)
+2. [TestVerification测试例子](src/test/java/com/xyue/paramverification/test/TestVerification.java)
 ```java
 public class TestVerification{
 	private static Logger logger = LoggerFactory.getLogger(TestVerification.class);
