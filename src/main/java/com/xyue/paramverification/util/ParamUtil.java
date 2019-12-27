@@ -19,9 +19,6 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
-
 import com.xyue.paramverification.annotation.Verification;
 import com.xyue.paramverification.enums.EnumVerificationStatus;
 import com.xyue.paramverification.exception.ParamVerificationException;
@@ -125,9 +122,9 @@ public class ParamUtil {
 					}else if(List.class.isAssignableFrom(field.getType())){
 						List<String> recursions_ = listAdd(recursions, field.getGenericType().getTypeName());
 						Type type =((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
-						while(type instanceof ParameterizedTypeImpl&&!(type instanceof Class<?>)){
+						while(type instanceof ParameterizedType&&!(type instanceof Class<?>)){
 							recursions_ = listAdd(recursions_, type.getTypeName());
-							type = ((ParameterizedTypeImpl)type).getActualTypeArguments()[0];
+							type = ((ParameterizedType)type).getActualTypeArguments()[0];
 						}
 						getAllFields(null,(Class<?>)type, paramModel.getKey(),prioritys_,recursions_);
 					}else if(field.getType().isArray()){
